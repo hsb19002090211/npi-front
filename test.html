@@ -29,11 +29,17 @@ $(function(){
 
     
   $("#btn").click(function(){
-        $.post("http://localhost:8585/creditByName",{name:$("#coursename").val()}, function(data){
-             $("#divcredit").text(data);
-        });
+    $.ajax({
+   type: "POST",
+   url: "http://localhost:8585/creditByName",
+   contentType:"application/json",
+   data:JSON.stringify({name:$("#coursename").val()}),
+   success: function(data){
+       $("#divcredit").text(data);
+   }
+});
     })
-        
+
 
 })
 
